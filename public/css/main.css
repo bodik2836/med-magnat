@@ -10,10 +10,24 @@ body {
     position: fixed;
 }
 
-.people-img {
-    width: 64px;
+.content {
+    min-height: calc(100vh - 128px);
 }
 
 .footer {
     color: white;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    text-decoration: none;
+    color: black;
+}
+
+.news-card:hover {
+    color: #718096;
 }

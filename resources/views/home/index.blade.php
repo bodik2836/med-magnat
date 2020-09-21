@@ -11,19 +11,19 @@
             </ol>
             <div class="carousel-inner rounded">
                 <div class="carousel-item active">
-                    <img src="{{ asset('public/images/med-1.jpg') }}" class="d-block w-100" alt="...">
+                    <img src="{{ asset('public/images/med-7.jpg') }}" class="d-block w-100" alt="...">
                     <div class="carousel-caption d-none d-md-block">
                         <h3>Прекрасний сервіс</h3>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="{{ asset('public/images/med-1.jpg') }}" class="d-block w-100" alt="...">
+                    <img src="{{ asset('public/images/med-8.jpg') }}" class="d-block w-100" alt="...">
                     <div class="carousel-caption d-none d-md-block">
                         <h3>Вигідні ціни</h3>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="{{ asset('public/images/med-1.jpg') }}" class="d-block w-100" alt="...">
+                    <img src="{{ asset('public/images/med-9.jpg') }}" class="d-block w-100" alt="...">
                     <div class="carousel-caption d-none d-md-block">
                         <h3>Висока якість послуг</h3>
                     </div>
@@ -83,7 +83,7 @@
             </div>
             <div class="card-body">
                 <div class="row">
-                    <div class="col-md-6 justify-">
+                    <div class="col-md-6">
                         <div class="card border-warning mb-3">
                             <div class="card-body">
                                 <div class="media">

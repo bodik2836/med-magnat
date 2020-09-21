@@ -16,7 +16,7 @@
 <div id="particles-js"></div>
 
 <!-- Top menu -->
-<section>
+<header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="/">Медовий Магнат</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -24,7 +24,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a class="nav-link disabled" href="#">Новини</a>
+                <a class="nav-link <?= $pageActive ?? '' ?>" href="/news">Новини</a>
                 <a class="nav-link disabled" href="#">Магазин</a>
                 <a class="nav-link disabled" href="#">Зв'язок</a>
             </div>
@@ -34,14 +34,16 @@
             </div>
         </div>
     </nav>
-</section>
+</header>
 
 {{-- Content --}}
-@yield('content')
+<div class="content">
+    @yield('content')
+</div>
 
 {{-- Footer --}}
 <footer class="footer mt-3">
-    <div class="navbar-fixed-bottom row-fluid navbar-dark bg-dark">
+    <div class="row-fluid navbar-dark bg-dark">
         <div class="navbar-inner text-center p-3">
             <div class="container">
                 &copy; Медовий Магнат {{ date('Y') }}
@@ -56,6 +58,8 @@
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 <script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-<script src="{{ asset('public/js/app.js') }}"></script>
+<script>
+    particlesJS.load('particles-js', "{{ asset('public/js/particles-config.json') }}");
+</script>
 </body>
 </html>
