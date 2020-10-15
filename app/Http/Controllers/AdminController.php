@@ -3,55 +3,71 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
-use Intervention\Image\Facades\Image as Image;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
+    public function admin()
+    {
+        $title = 'Admin';
+        $pageActive = 'active';
+        $posts = Post::all();
+        return view('admin.news', [
+            'title' => $title,
+            'posts' => $posts,
+            'pageActive' => $pageActive
+        ]);
+    }
+
     public function addPost(Request $request)
     {
         if (
             $request->has('title') &&
             $request->has('description') &&
-            $request->has('text')
+            $request->has('text') &&
+            $request->has('main_image_url')
         ) {
             $post = new Post();
             $post->title = $request->input('title');
             $post->description = $request->input('description');
             $post->text = $request->input('text');
+            $post->image = $request->input('main_image_url');
             $post->save();
 
-            return redirect('/admin/post/add');
+            return redirect('/admin');
         }
 
         $title = 'Admin';
+        $post_max_id = Post::max('id');
         return view('admin.add_post', [
-            'title' => $title
+            'title' => $title,
+            'post_max_id' => $post_max_id
         ]);
     }
 
-    public function upload(Request $request)
+    public function editPost(Request $request, $id)
     {
-        $path =  public_path().'/images/';
-        $file = $request->file('file');
-        $filename = time() . '.' . $file->getClientOriginalExtension() ?: 'png';
-        $img = Image::make($file);
-        $img->save($path . $filename);
+        $post = Post::findOrFail($id);
 
-        return response()->json([
-            'imageUrl' => asset('public/images/' . $filename)
-        ]);
-    }
+        if (
+            $request->has('title') &&
+            $request->has('description') &&
+            $request->has('text') &&
+            $request->has('main_image_url')
+        ) {
+            $post->title = $request->input('title');
+            $post->description = $request->input('description');
+            $post->text = $request->input('text');
+            $post->image = $request->input('main_image_url');
+            $post->save();
 
-    public function delete(Request $request)
-    {
-        $src = $request->input('src'); // $src = $_POST['src'];
-        $file = explode('/', $src);
-        $file_name = public_path() . '/images/' . $file[count($file)-1]; // striping host to get relative path
-        if(unlink($file_name))
-        {
-            return response('success', 200);
+            return redirect('/admin');
         }
-        return response('fail', 000);
+
+        $title = 'Admin';
+        return view('admin.edit_post', [
+            'title' => $title,
+            'post' => $post
+        ]);
     }
 }

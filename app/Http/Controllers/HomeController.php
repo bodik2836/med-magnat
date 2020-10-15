@@ -15,13 +15,13 @@ class HomeController extends Controller
         ]);
     }
 
-    public function news()
+    public function allPost()
     {
         $title = 'Новини';
         $posts = Post::all();
         $pageActive = 'active';
 
-        return view('home.news', [
+        return view('home.all_post', [
             'title' => $title,
             'posts' => $posts,
             'pageActive' => $pageActive

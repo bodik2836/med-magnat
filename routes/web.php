@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\SiteController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,12 +18,15 @@ use Illuminate\Support\Facades\Route;
 
 // User
 Route::get('/', [HomeController::class, 'index']);
-Route::get('news', [HomeController::class, 'news']);
-Route::get('news/{id}', [HomeController::class, 'showPost'])->where(['id' => '[0-9]+']);
+Route::get('post/all', [HomeController::class, 'allPost']);
+Route::get('post/show/{id}', [HomeController::class, 'showPost'])->where(['id' => '[0-9]+']);
 
 // Admin
 Route::get('admin', [AdminController::class, 'admin']);
 Route::match(['get', 'post'],'admin/post/add', [AdminController::class, 'addPost']);
+Route::match(['get', 'post'],'admin/post/edit/{id}', [AdminController::class, 'editPost']);
 
-Route::post('upload', [AdminController::class, 'upload'])->name('upload');
-Route::post('delete', [AdminController::class, 'delete'])->name('delete');
+// Site
+Route::post('upload', [SiteController::class, 'upload'])->name('upload');
+Route::post('delete', [SiteController::class, 'delete'])->name('delete');
+Route::post('getPostMaxId', [SiteController::class, 'getPostMaxId'])->name('getPostMaxId');

@@ -6,9 +6,9 @@
         <div class="row">
             @foreach($posts as $post)
                 <div class="col-12">
-                    <a href="/news/{{ $post->id }}">
+                    <a href="/post/show/{{ $post->id }}">
                         <div class="card news-card mt-3">
-                            <img src="{{ asset('public/images/med-1.jpg') }}" class="card-img-top" alt="...">
+                            <img src="{{ asset($post->image) }}" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <h5 class="card-title">{{ $post->title }}</h5>
                                 <p class="card-text">{{ $post->description }}</p>

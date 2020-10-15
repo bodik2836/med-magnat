@@ -31,3 +31,11 @@ a:hover {
 .news-card:hover {
     color: #718096;
 }
+
+.edit:hover {
+    color: blue;
+}
+
+.delete:hover {
+    color: red;
+}

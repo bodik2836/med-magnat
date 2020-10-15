@@ -24,7 +24,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a class="nav-link <?= $pageActive ?? '' ?>" href="/news">Новини</a>
+                <a class="nav-link <?= $pageActive ?? '' ?>" href="/post/all">Новини</a>
                 <a class="nav-link disabled" href="#">Магазин</a>
                 <a class="nav-link disabled" href="#">Зв'язок</a>
             </div>
@@ -58,8 +58,6 @@
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 <script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-<script>
-    particlesJS.load('particles-js', "{{ asset('public/js/particles-config.json') }}");
-</script>
+<script src="{{ asset('public/js/particles/app.js') }}"></script>
 </body>
 </html>

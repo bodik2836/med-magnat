@@ -16,6 +16,16 @@
 </head>
 <body>
 
+<div class="container">
+    <ul class="nav nav-pills justify-content-center mt-2 mb-2">
+        <li class="nav-item">
+            <a class="nav-link {{ $pageActive ?? '' }}" href="/admin">Новини</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link disabled" href="#">Магазин</a>
+        </li>
+    </ul>
+</div>
 
 
 {{-- Content --}}
@@ -32,62 +42,9 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
-<script src="{{ asset('public/js/summernote-uk-UA.min.js') }}"></script>
-<script>
-    $(document).ready(function() {
-        $('#text').summernote({
-            height: 300,
-            lang: 'uk-UA',
-            callbacks: {
-                onImageUpload: function(files) {
-                    var el = $(this);
-                    sendFile(files[0],el);
-                },
+<script src="{{ asset('public/js/summernote/app.js') }}"></script>
 
-                onMediaDelete: function(target) {
-                    // alert(target[0].src);
-                    deleteFile(target[0].src);
-                }
-            }
-        });
-    });
-
-    function sendFile(file, el) {
-        var  data = new FormData();
-        data.append("file", file);
-        var url = '{{ route('upload') }}';
-
-        $.ajax({
-            data: data,
-            type: "POST",
-            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-            url: url,
-            cache: false,
-            contentType: false,
-            processData: false,
-            success: function(response) {
-                el.summernote('insertImage', response.imageUrl, function ($image) {
-                    $image.css('max-width', '100%');
-                });
-            }
-        });
-    }
-
-    function deleteFile(src) {
-
-        $.ajax({
-            data: {src : src},
-            type: "POST",
-            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-            url: '{{ route('delete') }}', // replace with your url
-            cache: false,
-            success: function(resp) {
-                console.log(resp.status);
-            }
-        });
-    }
-
-</script>
+<script src="{{ asset('public/js/script.js') }}"></script>
 
 </body>
 </html>
